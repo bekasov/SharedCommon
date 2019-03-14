@@ -1,7 +1,7 @@
 ﻿namespace SharedCommon.DependencyInjection
 {
+    using Lamar;
     using SharedCommon.Logger;
-    using StructureMap;
 
     public sealed class Injector
     {
@@ -27,8 +27,7 @@
 
             wasCalled = true;
 
-            container = new StructureMap.Container();
-            container.Configure(config => 
+            container = new Container(config => 
             {
                 config.Scan(scanner =>
                 {
@@ -40,6 +39,7 @@
                 });
             });
 
+            container.GetNestedContainer().Inject<ILogger>();
             // logger?.Log(container.WhatDidIScan());
             logger?.Log($"{ nameof(Injector) } | DI container has been configured successfully");
         }

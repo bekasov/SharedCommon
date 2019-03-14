@@ -5,9 +5,9 @@ namespace SharedCommon.Helper
     using System.Collections.Concurrent;
     using System.Threading;
     using System.Threading.Tasks;
+    using Lamar;
     using SharedCommon.Helper.Concurrent;
     using SharedCommon.Logger;
-    using StructureMap.Attributes;
 
     public class LoadBalancer : ILoadBalancer
     {
